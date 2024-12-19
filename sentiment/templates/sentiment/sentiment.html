@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            background-color: #0C3B2E;
+            font-family: "Raleway", serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: <normal;
+        }
+
+        .container {
+            margin-top: 13%;
+            margin-left: 25%;
+            height: 300px;
+            width: 50%;
+            background-color: #BB8A52;
+            border-radius: 10px;
+        }
+
+        h1 {
+            padding-top: 40px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .bold-label {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px;
+            width: 150px;
+            border-radius: 8px;
+            background-color: aquamarine;
+        }
+
+        form {
+            padding-top: 2%;
+            padding-left: 25%
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        button:hover {
+            background-color: #0C3B2E;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis</h1>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="btn">
+                <button type="submit">Analyze</button>
+                <button><a href="{% url 'home' %}">Back To Home</a></button>
+            </div>
+        </form>
+
+        {% if result %}
+        <h2>Analyze Result:</h2>
+        <p><strong>Sentiment:</strong>{{ result }}</p>
+        <p><strong>Polarity:</strong>{{ polarity }}</p>
+        <p><strong>Subjectivity:</strong>{{ subjectivity }}</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
